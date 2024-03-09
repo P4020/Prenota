@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PrenotaPompa.Models;
 
 namespace PrenotaPompa.Controllers;
@@ -8,7 +9,6 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
 
-    private static List<Utente> Utenti = new List<Utente>();
     public HomeController(ILogger<HomeController> logger)
     {
         _logger = logger;
@@ -31,8 +31,10 @@ public class HomeController : Controller
 
     public IActionResult Prenotato( Utente u )
     {
-        Utenti.Add( u );
-        return View( Utenti );
+        dbContext db = new dbContext();
+        db.Utenti.Add( u );
+        db.SaveChanges();
+        return View( u );
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -1,12 +1,11 @@
-@model List<Utente>
+@model Utente
 @{
     ViewData["Title"] = "Prenotato";
 }
 <div class="text-center">
     <h1 class="display-4">Prenotato</h1>
-    <p>Grazie mille @Model[0].Nome per esserti prenotato da noi!</p>
-    <p>Si sono prenotati in @Model.Count()</p>
-    <table class="table">
+    <p>Grazie mille @Model.Nome per esserti prenotato da noi!</p>
+    @* <table class="table">
         <thead class="thread-dark">
             <tr>
                 <th>Nome</th>
@@ -30,6 +29,6 @@
                 }
             }
         </tbody>
-    </table>
+    </table> *@
    
 </div>
